@@ -10,7 +10,11 @@ export type IHomeScreen = {};
 export type ISettingsScreen = {};
 export type ILibraryScreen = {};
 export type IPersonalScreen = {};
-export type ISetDetailsScreen = {};
+export type IShareScreen = {};
+export type ISuggestionsScreen = {};
+export type ISetDetailsScreen = {
+  navigation: StackNavigationProp<AppNavigationParamsList, 'MinorScreens'>;
+};
 
 // ---------------  navigation params list  ---------------
 export type AppNavigationParamsList = {
@@ -24,9 +28,10 @@ export type MainAppNavigationParamsList = {
 };
 
 export type MainTabsNavigationParamsList = {
-  Home?: any;
-  Library?: any;
-  Settings?: any;
+  Home?: IHomeScreen;
+  Library?: ILibraryScreen;
+  Suggestions?: ISuggestionsScreen;
+  Share?: IShareScreen;
 };
 
 export type MinorScreensNavigationParamsList = {

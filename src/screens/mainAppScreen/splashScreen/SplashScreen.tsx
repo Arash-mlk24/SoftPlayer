@@ -21,7 +21,7 @@ const SplashScreen = ({navigation}: ISplashScreen) => {
       if (data) {
         // get musics
       } else {
-        navigation.navigate('MinorScreens', {screen: 'SetDetails'});
+        navigation.replace('MinorScreens', {screen: 'SetDetails'});
       }
     });
   });

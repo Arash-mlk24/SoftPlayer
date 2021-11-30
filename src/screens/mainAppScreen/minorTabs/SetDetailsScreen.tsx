@@ -4,14 +4,22 @@ import Primary from '@res/colors/Primary';
 import {
   getFormsContainerStyle,
   getMainContainerStyle,
+  getLaterTextStyle,
+  getLaterTextContainerStyle,
 } from '@res/styles/SetDetailsScreenStyles';
 import {ISetDetailsScreen} from '@utils/interfaces';
 import {height, width} from '@utils/scaling';
 import React, {useState} from 'react';
-import {Image, ImageBackground, Text, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {TextInput} from 'react-native-paper';
 
-function SetDetailsScreen(props: ISetDetailsScreen) {
+function SetDetailsScreen({navigation}: ISetDetailsScreen) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
 
@@ -54,6 +62,12 @@ function SetDetailsScreen(props: ISetDetailsScreen) {
         }}
         blurRadius={12}
       />
+      <TouchableOpacity
+        onPress={() => navigation.replace('MainTabs')}
+        style={getLaterTextContainerStyle(null)}
+        activeOpacity={1}>
+        <Text style={[getLaterTextStyle(null)]}>Later</Text>
+      </TouchableOpacity>
       <View style={getFormsContainerStyle(null)}>
         <TextInput
           style={{
@@ -69,8 +83,8 @@ function SetDetailsScreen(props: ISetDetailsScreen) {
             fullName === ''
               ? Common.LIGHT_GREY
               : hasFullNameError()
-              ? 'red'
-              : 'green'
+              ? Common.ERROR_RED
+              : Common.OK_GREEN
           }
           selectionColor={Primary.PINK}
           label="FullName"

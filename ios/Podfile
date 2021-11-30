@@ -12,6 +12,8 @@ target 'SoftPlayer' do
     :hermes_enabled => false
   )
 
+  pod 'RNReactNativeGetMusicFiles', :path => '../node_modules/react-native-get-music-files'
+
   target 'SoftPlayerTests' do
     inherit! :complete
     # Pods for testing
